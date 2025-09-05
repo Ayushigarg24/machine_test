@@ -13,38 +13,114 @@ public class PlacementTest {
             System.out.println(" Connected to DB successfully!");
 
             // ---- Input + validation ----
-            System.out.print("Enter Student Name (max 30): ");
-            String studentName = sc.nextLine().trim();
-            if (studentName.isEmpty() || studentName.length() > 30) {
-                System.out.println(" Invalid Student Name."); return;
+           
+            String studentName ;
+            while(true){
+                    System.out.print("Enter Student Name (max 30): ");
+                    studentName = sc.nextLine().trim();
+                    if(studentName.length() <= 30 && !studentName.isEmpty()){
+                        break;
+                    }
+                    else{
+                        System.out.println("Invalid name | Please try again");
+                    }
             }
 
-            System.out.print("Enter College Name (max 50): ");
-            String collegeName = sc.nextLine().trim();
-            if (collegeName.isEmpty() || collegeName.length() > 50) {
-                System.out.println(" Invalid College Name."); return;
+             String collegeName ;
+            while(true){
+                    System.out.print("Enter College Name (max 50): ");
+                    collegeName = sc.nextLine().trim();
+                    if(collegeName.length() <= 50 && !collegeName.isEmpty()){
+                        break;
+                    }
+                    else{
+                        System.out.println("Invalid name | Please try again");
+                    }
+            }
+            // if (studentName.isEmpty() || studentName.length() > 30) {
+            //     System.out.println(" Invalid Student Name."); return;
+            // }
+
+            // System.out.print("Enter College Name (max 50): ");
+            // String collegeName = sc.nextLine().trim();
+            // if (collegeName.isEmpty() || collegeName.length() > 50) {
+            //     System.out.println(" Invalid College Name."); return;
+            // }
+             float r1 ;
+            while(true){
+                    System.out.print("Enter Round1 Marks (0-10): ");
+                     r1 = sc.nextFloat();
+                    if (r1 > 0 && r1 < 10){
+                        break;
+                    }
+                    else{
+                        System.out.println(" Invalid Round1.");
+                    }
             }
 
-            System.out.print("Enter Round1 Marks (0–10): ");
-            float r1 = sc.nextFloat();
-            if (r1 < 0 || r1 > 10) { System.out.println(" Invalid Round1."); return; }
+            // System.out.print("Enter Round1 Marks (0-10): ");
+            // float r1 = sc.nextFloat();
+            // if (r1 < 0 || r1 > 10) { System.out.println(" Invalid Round1."); return; }
 
-            System.out.print("Enter Round2 Marks (0–10): ");
-            float r2 = sc.nextFloat();
-            if (r2 < 0 || r2 > 10) { System.out.println(" Invalid Round2."); return; }
+            float r2 ;
+            while(true){
+                    System.out.print("Enter Round2 Marks (0-10): ");
+                   r2 = sc.nextFloat();
+                    if (r2 > 0 && r2 < 10){
+                        break;
+                    }
+                    else{
+                        System.out.println(" Invalid Round2.");
+                    }
+            }
 
-            System.out.print("Enter Round3 Marks (0–10): ");
-            float r3 = sc.nextFloat();
-            if (r3 < 0 || r3 > 10) { System.out.println(" Invalid Round3."); return; }
+            // System.out.print("Enter Round2 Marks (0-10): ");
+            // float r2 = sc.nextFloat();
+            // if (r2 < 0 || r2 > 10) { System.out.println(" Invalid Round2."); return; }
 
-            System.out.print("Enter Technical Round Marks (0–20): ");
-            float tech = sc.nextFloat();
-            if (tech < 0 || tech > 20) { System.out.println(" Invalid Technical Round."); return; }
+            float r3 ;
+            while(true){
+                    System.out.print("Enter Round3 Marks (0-10): ");
+                   r3 = sc.nextFloat();
+                    if (r3 > 0 && r3 < 10){
+                        break;
+                    }
+                    else{
+                        System.out.println(" Invalid Round3.");
+                    }
+            }
+
+            // System.out.print("Enter Round3 Marks (0-10): ");
+            // float r3 = sc.nextFloat();
+            // if (r3 < 0 || r3 > 10) { System.out.println(" Invalid Round3."); return; }
+
+             float tech ;
+            while(true){
+                    System.out.print("Enter Technical Round Marks (0-20): ");
+                   tech = sc.nextFloat();
+                   if (tech > 0 && tech < 20){
+                        break;
+                    }
+                    else{
+                        System.out.println(" Invalid Technical Round.");
+                    }
+            }
+
+            // System.out.print("Enter Technical Round Marks (0-20): ");
+            // float tech = sc.nextFloat();
+            // if (tech < 0 || tech > 20) { System.out.println(" Invalid Technical Round."); return; }
 
             // ---- Auto calculation + decision ----
             float total = r1 + r2 + r3 + tech; // max 50
             if (total < 0 || total > 50) { System.out.println(" Total out of range."); return; }
-            String result = (total >= 35) ? "Selected" : "Rejected";
+            // String result = (total >= 35) ? "Selected" : "Rejected";
+            String result;
+            if(r1 < 6.5  || r2 <6.5 || r3< 6.5 || tech <13 || total<35 ){
+                result = "Rejected";
+            }
+            else{
+                result = "Selected";
+            }
 
             // ---- Insert (rank is filled later) ----
             String insertSql =
